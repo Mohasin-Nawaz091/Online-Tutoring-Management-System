@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary": "#2463eb", "background-light": "#f6f6f8" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" } } } }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Profile Settings - TutorFlow</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/students.js"></script>
+    <script src="js/tutors.js"></script>
+    <script src="js/dashboard.js"></script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
+
+        /* Fix for buttons with light background */
+        .bg-primary\/10 {
+            background-color: rgba(36, 99, 235, 0.1) !important;
+        }
+
+        .text-primary {
+            color: #2463eb !important;
+        }
+
+        .bg-primary {
+            background-color: #2463eb !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-background-light text-slate-900 min-h-screen">
+    <header class="sticky top-0 z-50 bg-white border-b border-slate-200 px-6 py-4">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-2xl">school</span>
+                <span class="text-lg font-bold">TutorFlow</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="back-btn"
+                    class="text-sm text-primary font-semibold hover:underline flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>Dashboard
+                </button>
+                <button data-action="logout"
+                    class="text-sm text-red-400 font-semibold hover:underline flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">logout</span>Sign Out
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-4xl mx-auto px-6 py-10">
+        <div class="mb-8">
+            <h1 class="text-3xl font-extrabold">Profile Settings</h1>
+            <p class="text-slate-500 mt-1">Update your personal information and preferences</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Profile Summary Card -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 text-center">
+                    <div class="size-24 rounded-full bg-slate-100 overflow-hidden mx-auto mb-4 border-4 border-white shadow-md relative group"
+                        id="profile-avatar-container">
+                        <img src="" id="profile-avatar-img" class="w-full h-full object-cover hidden" alt="Profile">
+                        <div id="profile-avatar-placeholder"
+                            class="w-full h-full flex items-center justify-center text-primary text-3xl font-bold bg-primary/10">
+                            ?</div>
+                    </div>
+                    <h2 class="font-bold text-xl" data-user-name>Loading...</h2>
+                    <p class="text-primary text-sm font-medium mt-1" id="profile-role-label">—</p>
+                    <p class="text-slate-500 text-sm mt-2" data-user-email>—</p>
+                    <div class="mt-6 pt-5 border-t border-slate-100">
+                        <div class="flex items-center gap-2 text-sm text-green-600 justify-center">
+                            <span class="material-symbols-outlined text-sm">verified</span>
+                            <span class="font-semibold">Account Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Edit Form -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="p-6 border-b border-slate-100">
+                        <h3 class="font-bold text-lg">Edit Information</h3>
+                    </div>
+                    <form id="profile-form" class="p-6 space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
+                                <div class="relative">
+                                    <span
+                                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person</span>
+                                    <input id="profile-name" type="text"
+                                        class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm"
+                                        placeholder="Your full name" />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
+                                <div class="relative">
+                                    <span
+                                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">call</span>
+                                    <input id="profile-phone" type="tel"
+                                        class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm"
+                                        placeholder="+1 (555) 000-0000" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-5">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Profile Picture URL</label>
+                                <div class="relative">
+                                    <span
+                                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">image</span>
+                                    <input id="profile-photo" type="url"
+                                        class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm"
+                                        placeholder="https://example.com/photo.jpg" />
+                                </div>
+                                <p class="text-[10px] text-slate-400 mt-1">Paste a URL ending in .jpg, .png, or .webp
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Tutor-only fields -->
+                        <div id="tutor-fields" class="space-y-5" style="display:none;">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Bio</label>
+                                <textarea id="profile-bio" rows="4"
+                                    class="w-full rounded-lg border border-slate-200 py-3 px-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none text-sm"
+                                    placeholder="Write a short bio about yourself..."></textarea>
+                            </div>
+                            <div class="grid grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-2">Subjects
+                                        (comma-separated)</label>
+                                    <input id="profile-subjects" type="text"
+                                        class="w-full py-3 px-4 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary outline-none text-sm"
+                                        placeholder="e.g. Calculus, Physics" />
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-2">Hourly Price ($)</label>
+                                    <input id="profile-price" type="number" min="0"
+                                        class="w-full py-3 px-4 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary outline-none text-sm"
+                                        placeholder="e.g. 45" />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Experience</label>
+                                <input id="profile-experience" type="text"
+                                    class="w-full py-3 px-4 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary outline-none text-sm"
+                                    placeholder="e.g. 5 years" />
+                            </div>
+                        </div>
+                        <div class="flex gap-4 pt-2">
+                            <button type="submit"
+                                class="flex-1 bg-primary text-white py-3 rounded-xl font-bold text-sm hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm">save</span>Save Changes
+                            </button>
+                            <button type="button" id="change-password-btn"
+                                class="px-6 py-3 border border-slate-200 text-slate-700 rounded-xl font-bold text-sm hover:bg-slate-50 transition-colors">
+                                Change Password
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        initProfilePage();
+        const u = getCurrentUser();
+        if (u) {
+            const img = document.getElementById('profile-avatar-img');
+            const placeholder = document.getElementById('profile-avatar-placeholder');
+            if (u.photo) {
+                img.src = u.photo;
+                img.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            } else {
+                placeholder.textContent = u.name.charAt(0).toUpperCase();
+            }
+            document.getElementById('profile-role-label').textContent = u.role.charAt(0).toUpperCase() + u.role.slice(1) + ' Account';
+            if (u.role === 'tutor') document.getElementById('tutor-fields').style.display = 'block';
+        }
+        // Back button
+        document.getElementById('back-btn').addEventListener('click', () => {
+            const cu = getCurrentUser();
+            if (cu) redirectToDashboard(cu);
+            else window.location.href = 'index.html';
+        });
+        document.getElementById('change-password-btn').addEventListener('click', () => {
+            showToast('Password change feature is for backend integration.', 'warning');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <script src="js/data.js"></script><script src="js/auth.js"></script>
+    <script src="js/tutors.js"></script>
+    
+    <title>Tutor Profile - Online Tutoring Management System</title>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
+        /* Fix for buttons with light background */
+        .bg-primary\/10 {
+            background-color: rgba(36, 99, 235, 0.1) !important;
+        }
+        .text-primary {
+            color: #2463eb !important;
+        }
+        .bg-primary {
+            background-color: #2463eb !important;
+        }
+    </style>
+    
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Top Navigation Bar -->
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50">
+                <div class="flex items-center gap-4 text-primary">
+                    <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                        <span class="material-symbols-outlined">school</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">
+                        EduFlow</h2>
+                </div>
+                <div class="flex flex-1 justify-end gap-4 items-center">
+                    <div class="hidden md:flex gap-2">
+                        <button
+                            class="flex items-center justify-center rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 hover:bg-slate-200 transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">share</span>
+                        </button>
+                        <button
+                            class="flex items-center justify-center rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 hover:bg-slate-200 transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">favorite</span>
+                        </button>
+                    </div>
+                    <div class="h-10 w-10 rounded-full bg-primary/20 border-2 border-primary/10 bg-cover bg-center"
+                        data-alt="Student profile avatar placeholder"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAc6TDocoG7Qko86rA9TieEVkM8582hvLY6sqPb91VakkWB_rOg-B2iGh2ix91rf2qVjooGzvxfvZwgI-JIT6jrkvycYc8GHRPGTQmJLBSzSFer_PXo-rf7QXO5UvhTZbcdcZyCVSXDJp4p5IZsPjCXDF-AbfQ-FM_qX7CteWN_51xk9jWZfHTel8ozG3ULp9ekbXgbHlWJ2tZtvSAjaEZVm1Wcc8pmHw4TxmmML81MCcXa0MLVKcMJgORP5JB6R47nYA00hfaaEKc')">
+                    </div>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8 px-4 md:px-10">
+                <div class="layout-content-container flex flex-col max-w-[1100px] flex-1 gap-8">
+                    <!-- Profile Header -->
+                    <section
+                        class="bg-white dark:bg-slate-900 rounded-xl p-6 md:p-10 border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
+                        <div class="relative">
+                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-2xl size-40 md:size-48 border-4 border-white dark:border-slate-800 shadow-xl"
+                                data-alt="Professional portrait of Dr. Sarah Jenkins"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8YYxUTzZeFaT2jGXcF4WCj1gdn44fvP9wr088wApDVqpzaJimDL4pO3kzkESazV4bpcH4fsl9yaTC3DL-WE8OHGnN1nnWu5_PGBhzW4pNLIjph6Sb3H0MbqpMqeLiLb7UK0THeXMdlqY2PysWnWcqteEVdplHOyeFEN1RckIsvcwRaUFWEm50i6cf5JOEoKgiMMFPF5PrQU4e9mRzLNjvwTyX4qWL0lWZ2XpX4zlwTeZ1drmqeLSB8uyW30kKxVZYV1hWQayFWfk");'>
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 bg-green-500 border-4 border-white dark:border-slate-900 size-8 rounded-full"
+                                title="Online now"></div>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-4">
+                            <div>
+                                <div class="flex flex-col md:flex-row md:items-center gap-2 mb-1">
+                                    <h1 class="text-slate-900 dark:text-slate-100 text-3xl font-bold leading-tight tracking-tight"
+                                        data-tutor-name>Dr. Sarah Jenkins</h1>
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary w-fit mx-auto md:mx-0">Verified
+                                        Professional</span>
+                                </div>
+                                <p class="text-slate-500 dark:text-slate-400 text-lg">Ph.D. in Mathematics | 10+ Years
+                                    Teaching Experience</p>
+                                <div class="flex items-center justify-center md:justify-start gap-2 mt-2">
+                                    <span class="material-symbols-outlined text-yellow-500 fill-1">star</span>
+                                    <span class="font-bold text-slate-900 dark:text-slate-100 text-lg">4.9</span>
+                                    <span class="text-slate-500">(124 reviews)</span>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed max-w-2xl"
+                                data-tutor-bio>
+                                Specializing in advanced calculus, linear algebra, and competitive exam preparation. I
+                                focus on making complex mathematical concepts easy to understand through interactive
+                                problem-solving and personalized curricula adapted to each student's pace.
+                            </p>
+                            <div class="flex flex-wrap gap-3 pt-2 justify-center md:justify-start">
+                                <button data-action="book-session"
+                                    class="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2">
+                                    <span class="material-symbols-outlined">event_available</span>
+                                    Book Session
+                                </button>
+                                <button
+                                    class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold py-3 px-8 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[20px]">chat</span>
+                                    Message
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+                            <span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Students</span>
+                            <span class="text-2xl font-bold text-primary">150+</span>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+                            <span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Hours Taught</span>
+                            <span class="text-2xl font-bold text-primary">1,200</span>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+                            <span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Response Time</span>
+                            <span class="text-2xl font-bold text-primary">&lt; 2hr</span>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+                            <span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Success Rate</span>
+                            <span class="text-2xl font-bold text-primary">98%</span>
+                        </div>
+                    </div>
+                    <!-- Main Content Tabs -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Left: Info Sections -->
+                        <div class="lg:col-span-2 space-y-8">
+                            <!-- Subjects Section -->
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+                                <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+                                    <h3 class="font-bold text-lg">Subjects &amp; Expertise</h3>
+                                </div>
+                                <div class="p-6">
+                                    <div class="space-y-6">
+                                        <div>
+                                            <h4
+                                                class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                                                Core Subjects</h4>
+                                            <div class="flex flex-wrap gap-2" id="tutor-subjects-list">
+                                                <span
+                                                    class="px-3 py-1.5 bg-primary/5 text-primary border border-primary/20 rounded-lg text-sm font-medium">Loading...</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                                                Levels Taught</h4>
+                                            <div class="flex gap-4">
+                                                <div class="flex items-center gap-2">
+                                                    <span
+                                                        class="material-symbols-outlined text-green-500">check_circle</span>
+                                                    <span class="text-slate-700 dark:text-slate-300">High School</span>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <span
+                                                        class="material-symbols-outlined text-green-500">check_circle</span>
+                                                    <span
+                                                        class="text-slate-700 dark:text-slate-300">Undergraduate</span>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <span
+                                                        class="material-symbols-outlined text-green-500">check_circle</span>
+                                                    <span class="text-slate-700 dark:text-slate-300">Graduate</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Experience Section -->
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+                                <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+                                    <h3 class="font-bold text-lg">Experience</h3>
+                                </div>
+                                <div class="p-6 space-y-6">
+                                    <div class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 size-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined">work</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-900 dark:text-slate-100">Senior Mathematics
+                                                Professor</h4>
+                                            <p class="text-slate-500 text-sm">Stanford University • 2018 - Present</p>
+                                            <p class="mt-2 text-slate-600 dark:text-slate-400">Leading undergraduate
+                                                lecture series on Advanced Analysis and supervising graduate research
+                                                students.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-4">
+                                        <div
+                                            class="flex-shrink-0 size-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined">history_edu</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-900 dark:text-slate-100">Ph.D. in Pure
+                                                Mathematics</h4>
+                                            <p class="text-slate-500 text-sm">MIT • 2014</p>
+                                            <p class="mt-2 text-slate-600 dark:text-slate-400">Dissertation on "New
+                                                Topological Methods in Complex Manifolds".</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Reviews Section -->
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+                                <div
+                                    class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                                    <h3 class="font-bold text-lg">Reviews</h3>
+                                    <button class="text-primary font-semibold text-sm">See all 124 reviews</button>
+                                </div>
+                                <div class="p-6 space-y-6">
+                                    <div class="border-b border-slate-100 dark:border-slate-800 pb-6">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <div class="flex items-center gap-3">
+                                                <div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center"
+                                                    data-alt="Student reviewer avatar"
+                                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWs32TZnE2cxwo9ZEGhNXk_XGK26ny8ZDK6NIi9HrVEgjJlOeC2ZD0ooGTr8-AxlqYuX5c80m4Bvfa-BtM7sTWjQH2tItSwPqg_CvmylsHOLrdMEpJF_RGbeQKYcnEBFAoMTulkjD0J2E15tuno7dFpCYl0E4pqUsTO26SmLMT3E5x5Nn5NOyaDOvh-2t2_MTzfg2_GI0QYOdzXarmdKsLYgJSkvf_Wgzkpo6Dd-6kvxSbI7x-QQg3O7IjBwiDA_6NapFvTgetytk')">
+                                                </div>
+                                                <div>
+                                                    <p class="font-bold text-slate-900 dark:text-slate-100">Jason M.</p>
+                                                    <p class="text-slate-500 text-xs">2 days ago • Calculus II</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex text-yellow-500">
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-slate-600 dark:text-slate-400">"Dr. Jenkins saved my semester!
+                                            She has a way of explaining integrals that finally clicked for me. Very
+                                            patient and organized."</p>
+                                    </div>
+                                    <div class="pb-2">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <div class="flex items-center gap-3">
+                                                <div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center"
+                                                    data-alt="Student reviewer avatar"
+                                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCyrLNJMbQCwPeyAfhPMwpqkd75wJtu774fQscWpc8dsgezWKxOTdPaOje-5G98KZYJsXDYIa20dfW1iM8YXjebuJReOx222vIqGTvVkdQe91hw3e9T-sqsCr2SjvK5g5j7NFTQRsfIsEPJovJYkmY3gXrcB_unnjUcX5G-vF0FNbTT-U2WwmPNFO3fDSSI8nfALIk-j52ahtqKQFWHEX5MzJVk9VmQNawR6sG36Wzn69lAZHLlH-oFxzoBTAFPwdWk-Aq3OLfpnEI')">
+                                                </div>
+                                                <div>
+                                                    <p class="font-bold text-slate-900 dark:text-slate-100">Elena R.</p>
+                                                    <p class="text-slate-500 text-xs">1 week ago • Statistics</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex text-yellow-500">
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                                <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-slate-600 dark:text-slate-400">"Excellent tutor. The notes she
+                                            provides after the session are incredibly helpful for review."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right: Calendar/Booking -->
+                        <div class="lg:col-span-1">
+                            <div
+                                class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm sticky top-24">
+                                <div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800">
+                                    <h3 class="font-bold text-lg">Availability</h3>
+                                    <p class="text-slate-500 text-sm">Select a date and time to book</p>
+                                </div>
+                                <div class="p-6">
+                                    <!-- Mini Calendar Header -->
+                                    <div class="flex items-center justify-between mb-4">
+                                        <button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded">
+                                            <span class="material-symbols-outlined">chevron_left</span>
+                                        </button>
+                                        <span class="font-bold text-sm">October 2023</span>
+                                        <button class="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded">
+                                            <span class="material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                    </div>
+                                    <!-- Simple Grid Placeholder -->
+                                    <div class="grid grid-cols-7 text-center text-xs font-semibold text-slate-400 mb-2">
+                                        <div>M</div>
+                                        <div>T</div>
+                                        <div>W</div>
+                                        <div>T</div>
+                                        <div>F</div>
+                                        <div>S</div>
+                                        <div>S</div>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-1 text-center mb-6">
+                                        <div class="py-2 text-slate-300">25</div>
+                                        <div class="py-2 text-slate-300">26</div>
+                                        <div class="py-2 text-slate-300">27</div>
+                                        <div class="py-2 text-slate-300">28</div>
+                                        <div class="py-2 text-slate-300">29</div>
+                                        <div class="py-2 text-slate-300">30</div>
+                                        <div class="py-2 font-bold">1</div>
+                                        <div class="py-2 font-bold">2</div>
+                                        <div
+                                            class="py-2 font-bold bg-primary/10 text-primary rounded-lg border border-primary/20">
+                                            3</div>
+                                        <div class="py-2 font-bold">4</div>
+                                        <div class="py-2 font-bold">5</div>
+                                        <div class="py-2 font-bold">6</div>
+                                        <div class="py-2 font-bold">7</div>
+                                        <div class="py-2 font-bold">8</div>
+                                        <div class="py-2 font-bold">9</div>
+                                        <div class="py-2 font-bold">10</div>
+                                        <div class="py-2 font-bold">11</div>
+                                        <div class="py-2 font-bold">12</div>
+                                        <div class="py-2 font-bold">13</div>
+                                        <div class="py-2 font-bold">14</div>
+                                        <div class="py-2 font-bold">15</div>
+                                    </div>
+                                    <!-- Time Slots -->
+                                    <div class="space-y-4">
+                                        <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">
+                                            Available slots for Oct 3</h4>
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <button
+                                                class="px-3 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-sm hover:border-primary hover:text-primary transition-all">09:00
+                                                AM</button>
+                                            <button
+                                                class="px-3 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-sm hover:border-primary hover:text-primary transition-all">11:30
+                                                AM</button>
+                                            <button
+                                                class="px-3 py-2 bg-primary text-white rounded-lg text-sm font-semibold">02:00
+                                                PM</button>
+                                            <button
+                                                class="px-3 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-sm hover:border-primary hover:text-primary transition-all">04:30
+                                                PM</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <span class="text-slate-600 dark:text-slate-400">Hourly Rate</span>
+                                            <span
+                                                class="text-xl font-bold text-slate-900 dark:text-slate-100">$65.00</span>
+                                        </div>
+                                        <button
+                                            class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:opacity-90 transition-opacity">
+                                            Book Selected Session
+                                        </button>
+                                        <p class="text-center text-xs text-slate-500 mt-4">No commitment required.
+                                            Cancel up to 24h before.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer
+                class="mt-12 py-10 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-center">
+                <p class="text-slate-500 text-sm">© 2024 TutorFlow Online Tutoring Management System. All rights
+                    reserved.</p>
+            </footer>
+        </div>
+    </div>
+    <script>
+        initTutorProfilePage();
+        // Wire back button
+        document.querySelector('[data-action="book-session"] ~ button, button[class*="slate-100"]');
+        document.querySelectorAll('[href="#"]').forEach(a => {
+            if (a.textContent.trim().includes('back') || a.textContent.trim() === '') return;
+        });
+        // Nav - back to search
+        document.querySelector('button.bg-slate-100, button[class*="bg-slate-100"]') &&
+            document.querySelector('button.bg-slate-100, button[class*="bg-slate-100"]').addEventListener('click', () => window.location.href = 'tutor_search.html');
+        // Book Selected Session in sidebar
+        const sidebarBookBtn = document.querySelector('button.w-full.bg-primary.text-white.font-bold.py-4');
+        if (sidebarBookBtn) sidebarBookBtn.addEventListener('click', () => {
+            const user = getCurrentUser();
+            if (!user || user.role !== 'student') { showToast('Please log in as a student to book.', 'warning'); return; }
+            const params = new URLSearchParams(window.location.search);
+            window.location.href = 'booking_page.html?tutor_id=' + params.get('id');
+        });
+    </script>
+</body>
+
+</html>
+

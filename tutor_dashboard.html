@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary": "#2463eb", "background-light": "#f6f6f8" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" } } } }
+  </script>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Tutor Dashboard - TutorFlow</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/tutors.js"></script>
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+    }
+  </style>
+
+  <style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined' !important;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'liga';
+    }
+
+    /* Fix for buttons with light background */
+    .bg-primary\/10 {
+      background-color: rgba(36, 99, 235, 0.1) !important;
+    }
+
+    .text-primary {
+      color: #2463eb !important;
+    }
+
+    .bg-primary {
+      background-color: #2463eb !important;
+    }
+  </style>
+
+</head>
+
+<body class="bg-background-light text-slate-900">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-slate-200 flex flex-col">
+      <div class="p-6 flex flex-col gap-4 h-full">
+        <div class="flex items-center gap-3">
+          <div
+            class="size-10 rounded-full bg-primary/10 overflow-hidden flex items-center justify-center text-primary font-bold text-xl border border-slate-200"
+            id="sidebar-avatar-container">
+            <img src="" id="sidebar-avatar-img" class="w-full h-full object-cover hidden" alt="T">
+            <span id="sidebar-avatar-placeholder">T</span>
+          </div>
+          <div>
+            <h1 class="text-sm font-semibold" data-user-name>Tutor</h1>
+            <p class="text-xs text-slate-500">Tutor Account</p>
+          </div>
+        </div>
+        <nav class="flex flex-col gap-1 grow">
+          <a id="nav-dashboard"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary cursor-pointer" href="#">
+            <span class="material-symbols-outlined text-xl">dashboard</span><span
+              class="text-sm font-medium">Dashboard</span>
+          </a>
+          <a id="nav-session-requests"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+            href="#">
+            <span class="material-symbols-outlined text-xl">mark_email_unread</span><span
+              class="text-sm font-medium">Session Requests</span>
+          </a>
+          <a id="nav-manage-subjects"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+            href="#">
+            <span class="material-symbols-outlined text-xl">book_5</span><span class="text-sm font-medium">Manage
+              Subjects</span>
+          </a>
+          <a id="nav-availability"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+            href="availability.html">
+            <span class="material-symbols-outlined text-xl">calendar_today</span><span
+              class="text-sm font-medium">Availability</span>
+          </a>
+          <a id="nav-profile"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+            href="#">
+            <span class="material-symbols-outlined text-xl">manage_accounts</span><span class="text-sm font-medium">My
+              Profile</span>
+          </a>
+          <a id="nav-logout"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-red-400 hover:bg-red-50 transition-colors cursor-pointer mt-2"
+            href="#">
+            <span class="material-symbols-outlined text-xl">logout</span><span class="text-sm font-medium">Sign
+              Out</span>
+          </a>
+        </nav>
+        <button id="nav-go-live"
+          class="w-full py-2.5 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all">
+          <span class="material-symbols-outlined text-lg">videocam</span>Go Live
+        </button>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto bg-background-light">
+      <div class="max-w-6xl mx-auto p-8">
+        <header class="flex justify-between items-center mb-8">
+          <div>
+            <h2 class="text-3xl font-black tracking-tight">Tutor Dashboard</h2>
+            <p class="text-slate-500 mt-1">Welcome back, <span data-user-name>Tutor</span>!</p>
+          </div>
+          <div class="flex gap-3">
+            <div class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg">
+              <span class="size-2 rounded-full bg-green-500"></span>
+              <span class="text-sm font-medium text-slate-700">Available</span>
+            </div>
+          </div>
+        </header>
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+              <div class="p-2 bg-blue-50 rounded-lg text-blue-600"><span
+                  class="material-symbols-outlined">pending_actions</span></div>
+              <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">Live</span>
+            </div>
+            <p class="text-slate-500 text-sm font-medium">Session Requests</p>
+            <p class="text-2xl font-bold mt-1" id="stat-requests">0</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+              <div class="p-2 bg-purple-50 rounded-lg text-purple-600"><span
+                  class="material-symbols-outlined">menu_book</span></div>
+            </div>
+            <p class="text-slate-500 text-sm font-medium">Active Subjects</p>
+            <p class="text-2xl font-bold mt-1" id="stat-subjects">0</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+              <div class="p-2 bg-orange-50 rounded-lg text-orange-600"><span
+                  class="material-symbols-outlined">schedule</span></div>
+            </div>
+            <p class="text-slate-500 text-sm font-medium">Scheduled Hours</p>
+            <p class="text-2xl font-bold mt-1">24.5h</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex justify-between items-start mb-4">
+              <div class="p-2 bg-green-50 rounded-lg text-green-600"><span
+                  class="material-symbols-outlined">payments</span></div>
+              <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-full">+12%</span>
+            </div>
+            <p class="text-slate-500 text-sm font-medium">Total Earnings</p>
+            <p class="text-2xl font-bold mt-1" id="stat-earnings">$0</p>
+          </div>
+        </div>
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Upcoming Sessions Table -->
+          <div class="lg:col-span-2 flex flex-col gap-6">
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+              <div class="p-6 border-b border-slate-200 flex justify-between items-center">
+                <h3 class="text-lg font-bold">Upcoming Confirmed Sessions</h3>
+                <a data-action="view-requests"
+                  class="text-sm font-semibold text-primary cursor-pointer hover:underline">View All Requests →</a>
+              </div>
+              <div id="tutor-upcoming-sessions" class="p-4">
+                <p class="text-center text-slate-400 py-6">Loading sessions...</p>
+              </div>
+            </div>
+            <!-- Weekly Performance Bar Chart -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+              <h3 class="text-lg font-bold mb-4">Weekly Activity</h3>
+              <div class="flex items-end justify-between h-32 gap-2 mt-4">
+                <div class="flex flex-col items-center flex-1 gap-2">
+                  <div class="w-full bg-primary/40 rounded-t-lg" style="height: 60%"></div><span
+                    class="text-[10px] text-slate-500 uppercase font-bold">Mon</span>
+                </div>
+                <div class="flex flex-col items-center flex-1 gap-2">
+                  <div class="w-full bg-primary/40 rounded-t-lg" style="height: 80%"></div><span
+                    class="text-[10px] text-slate-500 uppercase font-bold">Tue</span>
+                </div>
+                <div class="flex flex-col items-center flex-1 gap-2">
+                  <div class="w-full bg-primary/40 rounded-t-lg" style="height: 40%"></div><span
+                    class="text-[10px] text-slate-500 uppercase font-bold">Wed</span>
+                </div>
+                <div class="flex flex-col items-center flex-1 gap-2">
+                  <div class="w-full bg-primary rounded-t-lg" style="height: 95%"></div><span
+                    class="text-[10px] text-slate-500 uppercase font-bold">Thu</span>
+                </div>
+                <div class="flex flex-col items-center flex-1 gap-2">
+                  <div class="w-full bg-primary/40 rounded-t-lg" style="height: 70%"></div><span
+                    class="text-[10px] text-slate-500 uppercase font-bold">Fri</span>
+                </div>
+                <div class="flex flex-col items-center flex-1 gap-2">
+                  <div class="w-full bg-primary/20 rounded-t-lg" style="height: 30%"></div><span
+                    class="text-[10px] text-slate-500 uppercase font-bold">Sat</span>
+                </div>
+                <div class="flex flex-col items-center flex-1 gap-2">
+                  <div class="w-full bg-primary/10 rounded-t-lg" style="height: 20%"></div><span
+                    class="text-[10px] text-slate-500 uppercase font-bold">Sun</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right Sidebar -->
+          <div class="lg:col-span-1 flex flex-col gap-6">
+            <!-- Pending Requests -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+              <h3 class="text-lg font-bold mb-4">Pending Requests</h3>
+              <div id="pending-requests-mini" class="flex flex-col gap-3">
+                <p class="text-slate-400 text-sm text-center py-4">Loading...</p>
+              </div>
+              <button data-action="view-requests"
+                class="w-full mt-4 py-2 border border-primary text-primary rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all">
+                View All Requests
+              </button>
+            </div>
+            <!-- Availability -->
+            <div class="bg-primary rounded-xl p-6 text-white shadow-lg">
+              <h3 class="text-lg font-bold mb-2">My Availability</h3>
+              <p class="text-white/80 text-sm mb-4">Update your schedule anytime.</p>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-xs bg-white/20 p-2 rounded"><span>Mon –
+                    Fri</span><span class="font-bold">09:00 – 18:00</span></div>
+                <div class="flex items-center justify-between text-xs bg-white/20 p-2 rounded"><span>Sat</span><span
+                    class="font-bold">10:00 – 14:00</span></div>
+              </div>
+              <button onclick="window.location.href='availability.html'"
+                class="w-full mt-5 py-2 bg-white text-primary rounded-lg text-sm font-bold hover:bg-blue-50 transition-colors">Edit
+                Schedule</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    document.getElementById('nav-go-live').addEventListener('click', () => showToast('Live session feature coming soon!', 'warning'));
+    initTutorDashboard();
+    // Render upcoming confirmed sessions
+    const user2 = getCurrentUser();
+    if (user2) {
+      const img = document.getElementById('sidebar-avatar-img');
+      const placeholder = document.getElementById('sidebar-avatar-placeholder');
+      if (user2.photo) {
+        img.src = user2.photo;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        placeholder.textContent = user2.name.charAt(0).toUpperCase();
+      }
+
+      const confirmed = fetchBookingsForTutor(user2.id).filter(b => b.status === 'confirmed');
+      const container = document.getElementById('tutor-upcoming-sessions');
+      if (confirmed.length === 0) {
+        container.innerHTML = '<p class="text-center text-slate-400 py-6">No confirmed sessions yet.</p>';
+      } else {
+        container.innerHTML = `<table class="w-full text-left text-sm"><thead><tr class="bg-slate-50"><th class="px-4 py-2 text-xs font-bold uppercase text-slate-500">Student</th><th class="px-4 py-2 text-xs font-bold uppercase text-slate-500">Subject</th><th class="px-4 py-2 text-xs font-bold uppercase text-slate-500">Date & Time</th><th class="px-4 py-2 text-xs font-bold uppercase text-slate-500">Action</th></tr></thead><tbody class="divide-y divide-slate-100">` + confirmed.map(b => {
+          const s = fetchStudentById(b.student_id);
+          return `<tr class="hover:bg-slate-50 transition-colors"><td class="px-4 py-3 font-medium">${s ? s.name : 'N/A'}</td><td class="px-4 py-3 text-slate-600">${b.subject}</td><td class="px-4 py-3 text-slate-500">${formatDate(b.date)} ${b.time}</td><td class="px-4 py-3"><button onclick="window.location.href='session_room.html?booking_id=${b.id}'" class="px-3 py-1 bg-primary/10 text-primary rounded font-bold text-xs hover:bg-primary hover:text-white transition-all">Enter Room</button></td></tr>`;
+        }).join('') + '</tbody></table>';
+      }
+    }
+  </script>
+</body>
+
+</html>

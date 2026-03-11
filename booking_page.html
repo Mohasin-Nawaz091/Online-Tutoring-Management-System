@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary": "#2463eb", "background-light": "#f6f6f8" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" } } } }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Book a Session - TutorFlow</title>
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <script src="js/data.js"></script><script src="js/auth.js"></script>
+    <script src="js/bookings.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+    </style>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
+        /* Fix for buttons with light background */
+        .bg-primary\/10 {
+            background-color: rgba(36, 99, 235, 0.1) !important;
+        }
+        .text-primary {
+            color: #2463eb !important;
+        }
+        .bg-primary {
+            background-color: #2463eb !important;
+        }
+    </style>
+    
+</head>
+
+<body class="bg-background-light text-slate-900 min-h-screen">
+    <header class="sticky top-0 z-50 bg-white border-b border-slate-200 px-6 py-4">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <span class="material-symbols-outlined text-primary text-2xl">school</span>
+                <span class="text-lg font-bold">TutorFlow</span>
+            </div>
+            <button onclick="history.back()"
+                class="flex items-center gap-1 text-sm text-primary font-semibold hover:underline">
+                <span class="material-symbols-outlined text-sm">arrow_back</span>Back
+            </button>
+        </div>
+    </header>
+    <main class="max-w-4xl mx-auto px-6 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Booking Form -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 bg-gradient-to-r from-primary/5 to-transparent">
+                        <h1 class="text-2xl font-bold">Book a Tutoring Session</h1>
+                        <p class="text-slate-500 mt-1 text-sm">Fill out the details below to send your request</p>
+                    </div>
+                    <form id="booking-form" class="p-6 space-y-5">
+                        <!-- Tutor Select -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Select Tutor</label>
+                            <select id="booking-tutor-select"
+                                class="w-full rounded-lg border border-slate-200 py-3 px-4 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                <option value="">Loading tutors...</option>
+                            </select>
+                        </div>
+                        <!-- Subject -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Subject</label>
+                            <select id="booking-subject"
+                                class="w-full rounded-lg border border-slate-200 py-3 px-4 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                <option value="">Select a tutor first...</option>
+                            </select>
+                        </div>
+                        <!-- Date & Time -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">
+                                    <span
+                                        class="material-symbols-outlined text-sm align-middle text-primary">calendar_month</span>
+                                    Date
+                                </label>
+                                <input id="booking-date" type="date"
+                                    class="w-full rounded-lg border border-slate-200 py-3 px-4 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">
+                                    <span
+                                        class="material-symbols-outlined text-sm align-middle text-primary">schedule</span>
+                                    Time
+                                </label>
+                                <input id="booking-time" type="time"
+                                    class="w-full rounded-lg border border-slate-200 py-3 px-4 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    value="10:00" />
+                            </div>
+                        </div>
+                        <!-- Duration -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">
+                                <span
+                                    class="material-symbols-outlined text-sm align-middle text-primary">hourglass_empty</span>
+                                Duration
+                            </label>
+                            <select id="booking-duration"
+                                class="w-full rounded-lg border border-slate-200 py-3 px-4 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                <option value="0.5">30 minutes</option>
+                                <option value="1" selected>1 hour</option>
+                                <option value="1.5">1.5 hours</option>
+                                <option value="2">2 hours</option>
+                                <option value="3">3 hours</option>
+                            </select>
+                        </div>
+                        <!-- Notes -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Additional Notes <span
+                                    class="text-slate-400 font-normal">(optional)</span></label>
+                            <textarea id="booking-notes" rows="3"
+                                class="w-full rounded-lg border border-slate-200 py-3 px-4 text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none resize-none"
+                                placeholder="Tell the tutor what you need help with..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-4 rounded-xl font-bold text-base hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">event_available</span>Confirm Booking Request
+                        </button>
+                        <p class="text-center text-xs text-slate-400">Your request will be sent to the tutor for
+                            confirmation.</p>
+                    </form>
+                </div>
+            </div>
+            <!-- Info Sidebar -->
+            <div class="space-y-4">
+                <!-- Tutor Info Card -->
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <h3 class="font-bold text-lg mb-4">Session Summary</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-500">Tutor</span>
+                            <span class="font-bold" data-tutor-name>Select a tutor</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-500">Rate</span>
+                            <span class="font-bold text-primary" data-tutor-price>—</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-500">Estimated Cost</span>
+                            <span class="font-bold text-xl" id="booking-total-cost">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-400 space-y-1">
+                        <p>✓ No payment required now</p>
+                        <p>✓ Tutor will confirm within 2 hours</p>
+                        <p>✓ Free cancellation up to 24h before</p>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div class="bg-primary/5 border border-primary/20 rounded-xl p-5">
+                    <p class="text-sm font-semibold text-primary mb-2">📌 Tips for a Great Session</p>
+                    <ul class="text-xs text-slate-600 space-y-1.5">
+                        <li>• Have your study materials ready</li>
+                        <li>• Prepare specific questions in advance</li>
+                        <li>• Join 5 minutes early to test your connection</li>
+                    </ul>
+                </div>
+                <button onclick="window.location.href='tutor_search.html'"
+                    class="w-full py-2.5 border border-primary text-primary rounded-lg font-bold text-sm hover:bg-primary hover:text-white transition-all">
+                    ← Back to Tutors
+                </button>
+            </div>
+        </div>
+    </main>
+    <script>
+        initBookingPage();
+    </script>
+</body>
+
+</html>
+

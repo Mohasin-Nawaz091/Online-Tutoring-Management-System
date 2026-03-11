@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
+
+        /* Fix for buttons with light background */
+        .bg-primary\/10 {
+            background-color: rgba(36, 99, 235, 0.1) !important;
+        }
+
+        .text-primary {
+            color: #2463eb !important;
+        }
+
+        .bg-primary {
+            background-color: #2463eb !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50 shadow-sm">
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center gap-3 text-primary cursor-pointer"
+                        onclick="window.location.href='index.html'">
+                        <span class="material-symbols-outlined text-3xl font-bold">school</span>
+                        <h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">
+                            TutorFlow</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors"
+                            href="how-it-works.html">How it Works</a>
+                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors"
+                            href="tutor_search.html">Tutors</a>
+                        <a class="text-primary text-sm font-semibold border-b-2 border-primary py-1"
+                            href="resources.html">Resources</a>
+                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors"
+                            href="become_tutor.html">Become a Tutor</a>
+                    </nav>
+                </div>
+                <div class="flex flex-1 justify-end gap-4 items-center">
+                    <div class="hidden sm:block">
+                        <label class="flex flex-col min-w-40 h-10 max-w-64 relative">
+                            <span
+                                class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-xl">search</span>
+                            <input
+                                class="form-input flex w-full rounded-lg text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary/50 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 h-full pl-10 pr-4 text-sm font-normal placeholder:text-slate-500"
+                                placeholder="Quick search..." value="" />
+                        </label>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button
+                            class="material-symbols-outlined p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">notifications</button>
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border-2 border-primary/20"
+                            data-alt="User profile picture"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBYP2TKHWLjFCGk9EupCS7lGtMq4lLDVjwhpR3HAFgq6JVG-9ectBPrxdcfuP_nPThVTOPF5_7ZxU9h_kDkUYx4eC-f74qIsU7KDjwo_i69d3LpG-2wXVae0AY8PXVmXSvZ5YCihZ5HtM0v2P2kQFoD_i0VbtUkCPHBFW88l_ZeFgTEwnrEGoHhCJlXeOb0QxoIvtfrzPTCC92o29FQCnDreonlXcyjDqbR8kSmq5Y_Jy2rjbk9wymQBp7RsxpWOkmZUeo4HDO3mkE");'>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main class="flex-1 max-w-7xl mx-auto w-full px-4 md:px-10 py-8">
+                <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                    <div>
+                        <h1 class="text-slate-900 dark:text-slate-100 text-4xl font-extrabold tracking-tight mb-2">
+                            Learning Resources</h1>
+                        <p class="text-slate-600 dark:text-slate-400 text-lg">Browse and download curated study
+                            materials for your success.</p>
+                    </div>
+                    <div
+                        class="flex bg-white dark:bg-slate-900 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 w-fit self-start md:self-auto">
+                        <button
+                            class="px-6 py-2 rounded-lg text-sm font-semibold bg-primary text-white shadow-sm transition-all">Materials</button>
+                        <button
+                            class="px-6 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-all">Blog</button>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-6 mb-12">
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                        <div class="w-full md:flex-1">
+                            <label class="flex flex-col w-full h-12 relative">
+                                <span
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 text-2xl">search</span>
+                                <input
+                                    class="form-input flex w-full rounded-xl text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-primary/20 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 h-full pl-12 pr-4 text-base font-normal shadow-sm placeholder:text-slate-500"
+                                    placeholder="Search for PDFs, videos, or articles..." value="" />
+                            </label>
+                        </div>
+                        <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+                            <button
+                                class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-5 font-medium shadow-md shadow-primary/20">
+                                <span>All Topics</span>
+                            </button>
+                            <button
+                                class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-5 text-slate-600 dark:text-slate-400 hover:border-primary hover:text-primary transition-all font-medium">
+                                <span>Mathematics</span>
+                                <span class="material-symbols-outlined text-lg">keyboard_arrow_down</span>
+                            </button>
+                            <button
+                                class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-5 text-slate-600 dark:text-slate-400 hover:border-primary hover:text-primary transition-all font-medium">
+                                <span>Science</span>
+                                <span class="material-symbols-outlined text-lg">keyboard_arrow_down</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+                    <!-- Original Resource Cards -->
+                    <div
+                        class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-800">
+                        <div class="relative aspect-video overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                                data-alt="Advanced Calculus textbook cover"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRx0qzX_aIwhsliWmPaO7IULQ4UB9xRS1fUdDAHZsAN_Y1hmesPdYbaBVlCvC1_L7Nkd3YRNtTPcromEpsGRfMd3mLQFxIyLMkbT1zKTHNy-c6O4iETgUDfEfhmgo7RYSOxCRszllGWvduAwxJhbbqOKUxFkVq2p02CZRQ47g_Wv7JyJtwrkUjIeWeNrRm39A3vxY7Ilh6WhmmgMDv-MhXKcEwDeAVghluiGm_JkWu_MekCIw1GErBhhMhdBBhW6cOQHNOSFAm6Uk");'>
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">
+                                PDF</div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="text-xs font-semibold text-primary px-2 py-0.5 bg-primary/10 rounded-full">Mathematics</span>
+                                <span class="text-slate-400 dark:text-slate-600 text-xs">• 12.4 MB</span>
+                            </div>
+                            <h3 class="text-slate-900 dark:text-slate-100 font-bold text-lg mb-2 line-clamp-1">Advanced
+                                Calculus Vol. 1</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-5 line-clamp-2">A comprehensive
+                                guide covering multi-variable integration and differential forms.</p>
+                            <div class="flex gap-2">
+                                <button onclick="window.location.href='login.html'"
+                                    class="flex-1 bg-primary hover:bg-primary/90 text-white py-2 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-lg">download</span>
+                                    Download
+                                </button>
+                                <button
+                                    class="p-2 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                                    <span
+                                        class="material-symbols-outlined text-slate-600 dark:text-slate-400">visibility</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-800">
+                        <div class="relative aspect-video overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                                data-alt="Chemistry laboratory glass"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBRx6DnVTj0dbssuTvHQwNfK_wB8FFhXjoxBlPVFZRN3oQVMp-OrvDnL5OGPJtiW6HC7mlskiy_UGwMAvPawInnBwwbX7coTWWy3DqqkI2T1YPj3FLpewOp6hpE0XIngeJvI25Egz0jVtMPHNLXrk5xrXztMyQ5rPzlqjihH5IN1_SlLrnmX8nBb7qsHeZqMajQ_TWgFCH0fiA_iC5_BhAzJH6gLsjYLaSpog_bVJUWoCDaceUYl3WvJu3zgw__RdGTR-rvxErWB2w");'>
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-red-500">
+                                Video</div>
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="text-xs font-semibold text-primary px-2 py-0.5 bg-primary/10 rounded-full">Science</span>
+                                <span class="text-slate-400 dark:text-slate-600 text-xs">• 24:15 min</span>
+                            </div>
+                            <h3 class="text-slate-900 dark:text-slate-100 font-bold text-lg mb-2 line-clamp-1">Organic
+                                Chemistry Basics</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-5 line-clamp-2">Master the
+                                fundamentals of carbon-based molecules and functional groups.</p>
+                            <div class="flex gap-2">
+                                <button onclick="window.location.href='login.html'"
+                                    class="flex-1 bg-primary hover:bg-primary/90 text-white py-2 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-lg">play_arrow</span>
+                                    Watch Now
+                                </button>
+                                <button
+                                    class="p-2 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                                    <span
+                                        class="material-symbols-outlined text-slate-600 dark:text-slate-400">bookmark</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-800">
+                        <div class="relative aspect-video overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                                data-alt="Eiffel Tower and Paris"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDVBusKwt3fJYfqiOLRl0mAkaSnph7Y-r_k4K2tkCsRmhtjEXbhyA7bIQL3yhNrEZfaAu454H43ZoAFp9SkB2-afspjIoMmmIOT-q91ejnT4MhrPlrqIYu3XGCUjeuVqdITrhaUdVRRQIlmDK6pwXYFQSqU5uGo1r0PTtarFcEQnCm-TBPvat5ebRRzKi-dhG2GJwFMY3GRFVbVJQtCOW7oE9AUFpeveQwDMhhPuzjqB0PbBEe0KGEAq3m0SdzU0GVXAh3S6zhYxw4");'>
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-emerald-500">
+                                Article</div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="text-xs font-semibold text-primary px-2 py-0.5 bg-primary/10 rounded-full">Languages</span>
+                                <span class="text-slate-400 dark:text-slate-600 text-xs">• 8 min read</span>
+                            </div>
+                            <h3 class="text-slate-900 dark:text-slate-100 font-bold text-lg mb-2 line-clamp-1">Common
+                                French Phrases</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-5 line-clamp-2">Essential vocabulary
+                                for travelers and beginners starting their French journey.</p>
+                            <div class="flex gap-2">
+                                <button onclick="window.location.href='blogs_details.html'"
+                                    class="flex-1 bg-primary hover:bg-primary/90 text-white py-2 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-lg">article</span>
+                                    Read Article
+                                </button>
+                                <button
+                                    class="p-2 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                                    <span
+                                        class="material-symbols-outlined text-slate-600 dark:text-slate-400">share</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 dark:border-slate-800">
+                        <div class="relative aspect-video overflow-hidden">
+                            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                                data-alt="Business growth charts"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDU3wOQY6Eyt6KZmehSvGG1rCkAwP-L7_flMdM6VlNMDM1bGoxjw2HS1mxGnC_hG4i0jrGLToK8Qfeh55_49uriQPG6YKZcHxJqGI_H8QYpI3RzpOP5Wdcyx2xtmAd1uxpDSNmhgukJ06HI7-QLtsX-ApOebbU8Ym-NffBqtWS2GqUq_3hYfEnyGF5HoWUEFsfsyoTA3NX062xX-abzl3eSheTNtVbY-wickxmIhTr3WG_zJNvJPUIWBXhm3JP4I6vCH6hE-lmyGig");'>
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">
+                                PDF</div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="text-xs font-semibold text-primary px-2 py-0.5 bg-primary/10 rounded-full">Economics</span>
+                                <span class="text-slate-400 dark:text-slate-600 text-xs">• 5.1 MB</span>
+                            </div>
+                            <h3 class="text-slate-900 dark:text-slate-100 font-bold text-lg mb-2 line-clamp-1">
+                                Microeconomics Summary</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mb-5 line-clamp-2">Quick review of
+                                supply, demand, and market equilibrium concepts.</p>
+                            <div class="flex gap-2">
+                                <button onclick="window.location.href='login.html'"
+                                    class="flex-1 bg-primary hover:bg-primary/90 text-white py-2 rounded-lg font-medium text-sm transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-lg">download</span>
+                                    Download
+                                </button>
+                                <button
+                                    class="p-2 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                                    <span
+                                        class="material-symbols-outlined text-slate-600 dark:text-slate-400">visibility</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Blog Section -->
+                <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <h2 class="text-slate-900 dark:text-slate-100 text-2xl font-bold tracking-tight">Recent from
+                                the Blog</h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">Tips, tricks, and student success
+                                stories.</p>
+                        </div>
+                        <a class="text-primary font-semibold text-sm hover:underline flex items-center gap-1"
+                            href="resources.html">
+                            View all posts
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Blog Card 1 -->
+                        <article class="group cursor-pointer" onclick="window.location.href='blogs_details.html'">
+                            <div class="relative aspect-[16/9] mb-4 overflow-hidden rounded-xl">
+                                <img alt="Student studying with headphones"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-0oT_jpllN32LAMIryZV6sYjbA1jBOcF7gonTXDEePCOYmgJbobKkB-sazf8dTardMLcwDua-6ygtOQsrM4_TlIBLud_tADOG8U9rtu9-AYdohVcuxm3odfVfR1JtpAeGbv5Lr2iCL4osDriNGTcDV07WvxUlXiLLbkh42GCp4PKaMaAzqAWz3T7-lOmaoGG5eiiYhi-GNjfB4trK25ccWU9RKmPLS61RTGyr9thR0TTdjBO51XA1QvDL_83V9yTtACxr2-juy9A" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm text-primary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Study
+                                        Tips</span>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-slate-900 dark:text-slate-100 font-bold text-xl mb-2 group-hover:text-primary transition-colors">
+                                How to Master Active Recall for Your Exams</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-4 leading-relaxed">
+                                Discover why active recall is the most effective study technique and how you can
+                                implement it in your daily routine to boost retention.</p>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-slate-500 text-sm">person</span>
+                                </div>
+                                <div class="text-xs">
+                                    <p class="text-slate-900 dark:text-slate-100 font-semibold">Sarah Jenkins</p>
+                                    <p class="text-slate-400">Oct 12, 2024 • 5 min read</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Blog Card 2 -->
+                        <article class="group cursor-pointer" onclick="window.location.href='blogs_details.html'">
+                            <div class="relative aspect-[16/9] mb-4 overflow-hidden rounded-xl">
+                                <img alt="Online learning interface on laptop"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzeIOZz27SQVX6WooWInqanCH3iCdcy408hzXFWmQWGrKL8_tuzh7xTqlSo2Tqb1NCYAANtr8_OuNdeQ5gc3C4SxC_qUlFkieHlTgvwL0XKBvP2igNdUl3YQmgNKVEgalMwANxsdcMowy_3iV0qpzV2ZYpOHPnKpQeolLytCnGInns4OvcJwivRHX4PA79Z32aeII4VJa-1JOiwJrJIPqSVgj_AdOzA0DN3TWlhUWwmo8ugGkR5VPWlJ3onbimYtp4VxjYG3mLth8" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm text-primary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Technology</span>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-slate-900 dark:text-slate-100 font-bold text-xl mb-2 group-hover:text-primary transition-colors">
+                                The Future of AI in Modern Education</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-4 leading-relaxed">
+                                Artificial Intelligence is changing the landscape of learning. We explore how it can
+                                personalize your study experience and help you learn faster.</p>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-slate-500 text-sm">person</span>
+                                </div>
+                                <div class="text-xs">
+                                    <p class="text-slate-900 dark:text-slate-100 font-semibold">David Chen</p>
+                                    <p class="text-slate-400">Oct 10, 2024 • 8 min read</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Blog Card 3 -->
+                        <article class="group cursor-pointer" onclick="window.location.href='blogs_details.html'">
+                            <div class="relative aspect-[16/9] mb-4 overflow-hidden rounded-xl">
+                                <img alt="Students collaborating in a library"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrJqFZ2CIx2oF3Tz5TLhjhES19zORfiT2TZlri_l2g2CQ6we5-1LPXxxUoui2JCCLntVuxfeHd5jiDu6hhG4jkB-yB6I3DXDuLnRAbGS2f1cXAbF0zc87rDtrtvK_Bl1XwZX96v23e_TwNThG8_dQg_8Sz2F7IvHRInveE0imI84Qivh50nSUbf4i2p3Uue5GGZEY_8t4ev6djgvIvgtlzk9DVrfh0Yd3HwsNRDlEkCm6Kr09LpSNbbXR5n9azZmmHjZye9El_Rtw" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm text-primary text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">Community</span>
+                                </div>
+                            </div>
+                            <h3
+                                class="text-slate-900 dark:text-slate-100 font-bold text-xl mb-2 group-hover:text-primary transition-colors">
+                                Finding the Perfect Study Group</h3>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-4 leading-relaxed">
+                                Learning is better together. Learn how to find or start a study group that actually
+                                stays productive and supports your goals.</p>
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="size-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-slate-500 text-sm">person</span>
+                                </div>
+                                <div class="text-xs">
+                                    <p class="text-slate-900 dark:text-slate-100 font-semibold">Maya Patel</p>
+                                    <p class="text-slate-400">Oct 05, 2024 • 6 min read</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="mt-16 flex justify-center">
+                    <nav class="flex items-center gap-2">
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary hover:border-primary transition-all">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold shadow-md shadow-primary/20">1</button>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-all">2</button>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-all">3</button>
+                        <span class="px-2 text-slate-400">...</span>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-all">12</button>
+                        <button
+                            class="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-primary hover:border-primary transition-all">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </nav>
+                </div>
+            </main>
+            <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 mt-auto">
+                <div
+                    class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex items-center gap-3 text-slate-400 cursor-pointer"
+                        onclick="window.location.href='index.html'">
+                        <span class="material-symbols-outlined">school</span>
+                        <p class="text-sm font-medium">© 2026 TutorFlow Resources. All rights reserved.</p>
+                    </div>
+                    <div class="flex gap-8">
+                        <a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Help Center</a>
+                        <a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Privacy
+                            Policy</a>
+                        <a class="text-slate-500 hover:text-primary text-sm transition-colors" href="#">Terms of
+                            Service</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

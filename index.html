@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TutorFlow - Online Tutoring Management System</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
+
+        /* Fix for buttons with light background */
+        .bg-primary\/10 {
+            background-color: rgba(36, 99, 235, 0.1) !important;
+        }
+
+        .text-primary {
+            color: #2463eb !important;
+        }
+
+        .bg-primary {
+            background-color: #2463eb !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex min-h-screen flex-col">
+        <!-- Header -->
+        <header
+            class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 md:px-10 lg:px-20 py-4">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <div class="flex items-center gap-2 text-primary">
+                    <span class="material-symbols-outlined text-3xl font-bold">school</span>
+                    <h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">TutorFlow</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors"
+                        href="tutor_search.html">Find Tutors</a>
+                    <a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors"
+                        href="how-it-works.html">How it Works</a>
+                    <a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors"
+                        href="resources.html">Resources</a>
+                    <a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors"
+                        href="erd_diagram.html">Database (ERD)</a>
+                </nav>
+                <div class="flex items-center gap-3">
+                    <button onclick="window.location.href='login.html'"
+                        class="hidden sm:flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                        Login
+                    </button>
+                    <button onclick="window.location.href='registeration.html'"
+                        class="flex min-w-[100px] items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1">
+            <!-- Hero Section -->
+            <section class="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 py-12 md:py-20">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="flex flex-col gap-8">
+                        <div class="flex flex-col gap-4">
+                            <span
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider w-fit">
+                                <span class="material-symbols-outlined text-sm">verified</span>
+                                Rated #1 Tutoring Platform
+                            </span>
+                            <h1
+                                class="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">
+                                Find the Perfect Tutor for Your <span class="text-primary">Learning</span>
+                            </h1>
+                            <p
+                                class="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal max-w-xl leading-relaxed">
+                                Unlock your potential with personalized 1-on-1 online lessons from world-class experts.
+                                Manage your schedule, payments, and progress all in one secure place.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="window.location.href='registeration.html'"
+                                class="h-14 px-8 rounded-xl bg-primary text-white text-lg font-bold shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all flex items-center gap-2">
+                                Get Started <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                            <button onclick="window.location.href='tutor_search.html'"
+                                class="h-14 px-8 rounded-xl border-2 border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all">
+                                View Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="w-full aspect-square rounded-3xl bg-slate-200 dark:bg-slate-800 overflow-hidden shadow-2xl relative z-10"
+                            data-alt="Students studying together in a modern classroom"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDN-aoobOGSp-r0JtZMrHberx9qXULlkyVap-0CnSCAgFRo1ZXkxhjsRg0O7kEGj8T5y1EBvxV9iiz6OJqqABtXCGYXCPKfqtAqim9xZUEoZc-PzysCRuc-3c2Kez9bsogtjaRtMHJX1glPcCF0h_Aem06jGJuCGDQ6imBRXHeZPs9buSLk6ojL33hiHy2J2rgjjCyR_1I5xUS2nnVu5o_NM8D3o0TIXSN566_Dgn48myfjFPAxoFhGqa3UdU4CJhdoFsdaj_Gr7Ic'); background-size: cover; background-position: center;">
+                        </div>
+                        <div
+                            class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4 border border-slate-100 dark:border-slate-700">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300"
+                                    data-alt="Tutor avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4k1PsMkLPNjABSOigvpY9ql0O6N-BsmOSnnwt2andU9cLEJ1BkxgqHjUeqCa800tgxXd_W__r-kNN-p-5zVJoKxx4HZXW8oqJkNoh6r7Er2eYr-vy3z-jIj3jJpGqm42RmgsvFL3FjUh9xCMrh7RztBuyRg0l87W602pN5y7X0rPkBm2ne-02N1GAvJ2mqnjnxmzBl1xk-CoUyz-YgjdlYP5rber3vZbiAwtzT8wLWWcDQSt9gL-7FqUZ4-QkNmKbDCE7yjiYJ8M'); background-size: cover;">
+                                </div>
+                                <div class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300"
+                                    data-alt="Tutor avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrFxV2Z191F4uNnrsOI3GVwsYE3guqYTG4voIJtGUtdz9CdtU3yINxpdgzDarmwrHJSWlZk1LxINA1cHp3R5U_W9pnO2KeG4RZ9N6pl07DLvqFHgYKJWohMMw3-rgMq4Iw--YhdOE6_XHpFs_LpAXcrT6_E2Lhp4iu9RO8ZkuvykGTuUL-cdv0QMikCKv9Q9AyprOmIete0HD6bVTFs5NoR7jobEZLaSjXWkXcAC5eilSzlwbtGuByj_gs43LJQli8aVK5Vh3v29o'); background-size: cover;">
+                                </div>
+                                <div class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-slate-300"
+                                    data-alt="Tutor avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXopPlJCzHAFvv8cPCi7CACLrcFo48VxdvTw6BdHG7dA_0UG5OaJZ2vQ4hN41oOsUq9AiUrSmThd7chO_LB3yoD4gLAD_kLMIHC42EoSWOczc8CCI6h-1EVBWsCnZ2EyuYqLN0JpewzPFLpfsT-MUOtBEIXkbHguzQx_c_pGcIGuE8j3yyQ9UmUlBwJaTDqXwmc9v0hyQ0HXrPIjP5nCdvSk62qKq3Lzp0l77OWIOcJPX-yS0EthjKc8K-jAzzc4eUe4fpP88W0l8'); background-size: cover;">
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900 dark:text-white">500+ Expert Tutors</p>
+                                <p class="text-xs text-slate-500">Available right now</p>
+                            </div>
+                        </div>
+                        <div class="absolute -top-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Search Section -->
+            <section class="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 -mt-8 relative z-30">
+                <div
+                    class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1 relative">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                            <input id="hero-search-input"
+                                class="w-full h-14 pl-12 pr-4 bg-slate-50 dark:bg-slate-900 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900 dark:text-white placeholder:text-slate-400"
+                                placeholder="Search tutors by subject, like Mathematics or Physics" type="text" />
+                        </div>
+                        <div class="md:w-48 relative">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">category</span>
+                            <select id="hero-level-select"
+                                class="w-full h-14 pl-12 pr-4 bg-slate-50 dark:bg-slate-900 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900 dark:text-white appearance-none">
+                                <option>Level</option>
+                                <option>High School</option>
+                                <option>University</option>
+                                <option>Professional</option>
+                            </select>
+                        </div>
+                        <button id="find-now-btn"
+                            class="h-14 px-10 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors">
+                            Find Now
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- Featured Tutors -->
+            <section id="featured-tutors" class="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 py-20">
+                <div class="flex items-end justify-between mb-10">
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Featured Expert Tutors</h2>
+                        <p class="text-slate-500 mt-2">Work with the best in the industry</p>
+                    </div>
+                    <a class="text-primary font-bold flex items-center gap-1 hover:underline" href="#">
+                        View all <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Tutor Card 1 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+                        <div class="aspect-[4/5] rounded-xl mb-4 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                                data-alt="Male tutor portrait, professional and smiling"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC85nkxcqP72T4Foq4SKy8DDfymjQqB8RKkom3PULjle9jbsPmbgUWJkJ50iRZXeBCokL9WR2ZlefOKqJSMitWCh3RDWpdLz_jzaWYQ63i7cmqMnBLNwIBmN_xFPCyDOrnqCuw9aRD71QGp8GwBFJD8fc_31dR9LA9pIUS3PRjBBShk5d9QAhZcxltsTy-ENF1oG-QuEHOs8F3kW9tCpwHeJn7bpI4YMsz2Q6tfWnbc49k05F-ebgTpzoChIOcOjczB6SLnKaR3itk');">
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 text-sm font-bold text-slate-900 dark:text-white">
+                                <span class="material-symbols-outlined text-yellow-500 text-sm fill-current">star</span>
+                                4.9
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Dr. Robert Chen</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Mathematics PhD</p>
+                        <div
+                            class="flex items-center justify-between py-3 border-t border-slate-50 dark:border-slate-700">
+                            <span class="text-slate-500 text-sm">$45/hr</span>
+                            <button class="text-primary font-bold text-sm flex items-center gap-1">
+                                Profile <span class="material-symbols-outlined text-sm">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Tutor Card 2 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+                        <div class="aspect-[4/5] rounded-xl mb-4 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                                data-alt="Female tutor portrait, friendly and modern"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDNxJlyKnrfpSK5ASX8CWwVGVIFWenvFvlW9F71r9yyoAjkshkT8SAJAYx-dpD_I7dN33yFm4_Llu8IJU9RX32Uqr0ySjgUbz1xsjOTS_EydP06SOG_Vp98Whjhafk5yKOdrxdDUo6Um3xSt2K6iVi8bvQgXwVUseZQQzYGWouMbntMof0CLcHDSNqv2Zaawh4zvKaTI2qgvdPxIOmVufKWaUzkyEaSKxam_Hg1n9Gduz7CO5b6uA5AE1SlPvLFGOaEYYM6_RI0Q0Y');">
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 text-sm font-bold text-slate-900 dark:text-white">
+                                <span class="material-symbols-outlined text-yellow-500 text-sm fill-current">star</span>
+                                5.0
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Sarah Jenkins</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">English Literature</p>
+                        <div
+                            class="flex items-center justify-between py-3 border-t border-slate-50 dark:border-slate-700">
+                            <span class="text-slate-500 text-sm">$38/hr</span>
+                            <button class="text-primary font-bold text-sm flex items-center gap-1">
+                                Profile <span class="material-symbols-outlined text-sm">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Tutor Card 3 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+                        <div class="aspect-[4/5] rounded-xl mb-4 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                                data-alt="Male tutor in smart casual attire"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBzPsheE1phYbhJW7SCGEB28wMdCEia4r4j2yTAGGybNTuMi9XvKmMnM1DOG1DlVG1Q9FYkfwCGhAz9yr_J2P7uxzmbcBUyLrmR_hCK-uEk4JqYvjp3_oHWVGgw8uyFV4j9q9YQ-zI-2c7CkPX9DZngt-dqMH00Wp4e8_a78LQ7NmQQPT-SNJZSIGt2FnrWT1zm-4cpA_zRSNPKbuZLZOp1r3tsffx3JxmXocDk9MPyE8cpPzJjpaOOYJ0P-AovzQn0TpoqOMqmRUk');">
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 text-sm font-bold text-slate-900 dark:text-white">
+                                <span class="material-symbols-outlined text-yellow-500 text-sm fill-current">star</span>
+                                4.8
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Michael Vogt</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Physics &amp; Calculus</p>
+                        <div
+                            class="flex items-center justify-between py-3 border-t border-slate-50 dark:border-slate-700">
+                            <span class="text-slate-500 text-sm">$50/hr</span>
+                            <button class="text-primary font-bold text-sm flex items-center gap-1">
+                                Profile <span class="material-symbols-outlined text-sm">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Tutor Card 4 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+                        <div class="aspect-[4/5] rounded-xl mb-4 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                                data-alt="Professional female tutor, smiling confidently"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDbzbFODfl1PRG0lgUahsaPLo4MRnVLoy4F7SBed24OlgHqBUyrYcmz25_N5bC4zW44qU75L2Bd-AE6q-NzHQsPMJkweKqww4XA9LR7yN0vpn9VxMPp2pXdobKnCx3Dar164JPMRn5ox-AaVulg-Kp3PSvi5QTaZUTTbklBCfn9thcN0jGZvHhkO_VhQfThCY2DKFg_t9iBJyUgUzy0F_NaOWEgWUAqn-5D_QFlDHQwI-zDUqA-jyXnMTFoQnYRmIaasSBuVE0O5Kc');">
+                            </div>
+                            <div
+                                class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur px-2 py-1 rounded-lg flex items-center gap-1 text-sm font-bold text-slate-900 dark:text-white">
+                                <span class="material-symbols-outlined text-yellow-500 text-sm fill-current">star</span>
+                                5.0
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Elena Rodriguez</h3>
+                        <p class="text-primary text-sm font-semibold mb-3">Spanish Specialist</p>
+                        <div
+                            class="flex items-center justify-between py-3 border-t border-slate-50 dark:border-slate-700">
+                            <span class="text-slate-500 text-sm">$40/hr</span>
+                            <button class="text-primary font-bold text-sm flex items-center gap-1">
+                                Profile <span class="material-symbols-outlined text-sm">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- How it Works -->
+            <section id="how-it-works" class="bg-white dark:bg-slate-900/50 py-24">
+                <div class="max-w-7xl mx-auto px-4 md:px-10 lg:px-20">
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4">How the
+                            Platform Works</h2>
+                        <p class="text-slate-500 text-lg">Simplifying the journey from learning to mastery in four easy
+                            steps.</p>
+                    </div>
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-3xl">search</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-3">Find a Tutor</h4>
+                            <p class="text-slate-500 text-sm">Filter by subject, level, and price to find your ideal
+                                match.</p>
+                            <div
+                                class="hidden md:block absolute top-8 left-[calc(50%+40px)] w-full h-[2px] bg-slate-100 dark:bg-slate-800 -z-10">
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-3xl">calendar_month</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-3">Book a Lesson</h4>
+                            <p class="text-slate-500 text-sm">Pick a time that fits your schedule from the tutor's
+                                availability.</p>
+                            <div
+                                class="hidden md:block absolute top-8 left-[calc(50%+40px)] w-full h-[2px] bg-slate-100 dark:bg-slate-800 -z-10">
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-3xl">videocam</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-3">Start Learning</h4>
+                            <p class="text-slate-500 text-sm">Join the 1-on-1 virtual classroom with interactive tools.
+                            </p>
+                            <div
+                                class="hidden md:block absolute top-8 left-[calc(50%+40px)] w-full h-[2px] bg-slate-100 dark:bg-slate-800 -z-10">
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col items-center text-center group">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                                <span class="material-symbols-outlined text-3xl">trending_up</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 dark:text-white text-xl mb-3">Track Progress</h4>
+                            <p class="text-slate-500 text-sm">Review lesson recordings, notes, and track your
+                                improvement.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CTA Section -->
+            <section class="max-w-7xl mx-auto px-4 md:px-10 lg:px-20 py-24">
+                <div class="bg-primary rounded-[2rem] p-12 md:p-20 text-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h2 class="text-white text-3xl md:text-5xl font-extrabold mb-6">Ready to start your learning
+                            journey?</h2>
+                        <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                            Join thousands of students and expert tutors today. Your first lesson is backed by our 100%
+                            satisfaction guarantee.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <button onclick="window.location.href='registeration.html'"
+                                class="bg-white text-primary px-8 h-14 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all">Get
+                                Started Now</button>
+                            <button onclick="window.location.href='registeration.html?role=tutor'"
+                                class="bg-white/10 text-white border border-white/20 px-8 h-14 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Become
+                                a Tutor</button>
+                        </div>
+                    </div>
+                    <!-- Abstract circles for background -->
+                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-background-dark border-t border-slate-100 dark:border-slate-800 pt-20 pb-10">
+            <div class="max-w-7xl mx-auto px-4 md:px-10 lg:px-20">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
+                    <div class="col-span-2">
+                        <div class="flex items-center gap-2 text-primary mb-6">
+                            <span class="material-symbols-outlined text-3xl font-bold">school</span>
+                            <h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">TutorFlow</h2>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 max-w-xs mb-6">
+                            The world's leading platform for personalized 1-on-1 online tutoring. We make education
+                            accessible to everyone.
+                        </p>
+                        <div class="flex gap-4">
+                            <a class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary transition-colors"
+                                href="#">
+                                <span class="material-symbols-outlined">social_leaderboard</span>
+                            </a>
+                            <a class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary transition-colors"
+                                href="#">
+                                <span class="material-symbols-outlined">alternate_email</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-6">Platform</h4>
+                        <ul class="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
+                            <li><a class="hover:text-primary" href="tutor_search.html">Find a Tutor</a></li>
+                            <li><a class="hover:text-primary" href="how-it-works.html">How it Works</a></li>
+                            <li><a class="hover:text-primary" href="resources.html">Resources</a></li>
+                            <li><a class="hover:text-primary" href="erd_diagram.html">Database (ERD)</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-6">Company</h4>
+                        <ul class="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
+                            <li><a class="hover:text-primary" href="PROJECT_DOCUMENTATION.md">Project Docs</a></li>
+                            <li><a class="hover:text-primary" href="HOW_TO_RUN.txt">Setup Guide</a></li>
+                            <li><a class="hover:text-primary" href="resources.html">Blog</a></li>
+                            <li><a class="hover:text-primary" href="mailto:support@tutorflow.com">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-6">Support</h4>
+                        <ul class="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
+                            <li><a class="hover:text-primary" href="#">Help Center</a></li>
+                            <li><a class="hover:text-primary" href="#">Safety</a></li>
+                            <li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+                            <li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-slate-100 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-slate-400 text-sm">© 2026 TutorFlow Inc. All rights reserved.</p>
+                    <div class="flex gap-6 text-sm text-slate-400">
+                        <a class="hover:text-primary" href="#">Privacy</a>
+                        <a class="hover:text-primary" href="#">Terms</a>
+                        <a class="hover:text-primary" href="#">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('find-now-btn').addEventListener('click', () => {
+            const q = document.getElementById('hero-search-input').value;
+            window.location.href = 'tutor_search.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+        });
+        document.getElementById('hero-search-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') document.getElementById('find-now-btn').click();
+        });
+        // Wire tutor profile buttons
+        document.querySelectorAll('.tutor-profile-btn').forEach((btn, i) => {
+            const ids = ['t1', 't2', 't3', 't4'];
+            btn.addEventListener('click', () => window.location.href = 'tutor_profile.html?id=' + ids[i]);
+        });
+        // Check if user is already logged in - show dashboard link
+        const u = getCurrentUser();
+        if (u) {
+            const loginBtn = document.querySelector('button[onclick="window.location.href=\'login.html\'"]');
+            if (loginBtn) { loginBtn.textContent = 'Dashboard'; loginBtn.onclick = () => redirectToDashboard(u); }
+        }
+        // Find Tutors nav link
+        document.querySelectorAll('a[href="#"]').forEach(a => {
+            if (a.textContent.trim() === 'Find Tutors') a.href = 'tutor_search.html';
+            if (a.textContent.trim() === 'View all') a.href = 'tutor_search.html';
+        });
+    </script>
+</body>
+
+</html>

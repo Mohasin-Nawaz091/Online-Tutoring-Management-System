@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary": "#2463eb", "background-light": "#f6f6f8" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" } } } }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Find Tutors - TutorFlow</title>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/tutors.js"></script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
+
+        /* Fix for buttons with light background */
+        .bg-primary\/10 {
+            background-color: rgba(36, 99, 235, 0.1) !important;
+        }
+
+        .text-primary {
+            color: #2463eb !important;
+        }
+
+        .bg-primary {
+            background-color: #2463eb !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-background-light text-slate-900 min-h-screen">
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <div class="flex items-center gap-8 flex-1">
+                <div class="flex items-center gap-3 text-primary cursor-pointer"
+                    onclick="window.location.href='index.html'">
+                    <span class="material-symbols-outlined text-3xl font-bold">school</span>
+                    <h1 class="text-xl font-bold tracking-tight text-slate-900">TutorFlow</h1>
+                </div>
+                <div class="hidden md:flex flex-1 max-w-lg relative">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                    <input id="tutor-search-input"
+                        class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm outline-none"
+                        placeholder="Search for tutors..." type="text" />
+                </div>
+                <nav class="hidden lg:flex items-center gap-6 ml-4">
+                    <a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors"
+                        href="how-it-works.html">How it Works</a>
+                    <a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors"
+                        href="resources.html">Resources</a>
+                </nav>
+            </div>
+            <nav class="flex items-center gap-4">
+                <div id="nav-user-area" class="flex items-center gap-3">
+                    <!-- Filled by JS -->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="w-full lg:w-72 shrink-0 space-y-6">
+                <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                    <h2 class="text-lg font-bold mb-5 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">filter_list</span>Filters
+                    </h2>
+                    <div class="space-y-5">
+                        <!-- Subject Filter -->
+                        <div>
+                            <label
+                                class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">Subject</label>
+                            <select id="filter-subject"
+                                class="w-full rounded-lg border-slate-200 text-sm py-2.5 px-3 focus:ring-primary border focus:border-primary outline-none">
+                                <option value="">All Subjects</option>
+                                <option>Mathematics</option>
+                                <option>Physics</option>
+                                <option>Computer Science</option>
+                                <option>English Literature</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                                <option>Chemistry</option>
+                                <option>Biology</option>
+                                <option>Economics</option>
+                                <option>Statistics</option>
+                                <option>Calculus</option>
+                                <option>Python</option>
+                                <option>Data Science</option>
+                            </select>
+                        </div>
+                        <!-- Price Range -->
+                        <div>
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">Price
+                                Range ($/hr)</label>
+                            <div class="flex items-center gap-2">
+                                <input id="filter-min-price"
+                                    class="w-full rounded-lg border border-slate-200 text-sm py-2.5 px-3 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="Min" type="number" min="0" />
+                                <span class="text-slate-400">–</span>
+                                <input id="filter-max-price"
+                                    class="w-full rounded-lg border border-slate-200 text-sm py-2.5 px-3 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="Max" type="number" min="0" />
+                            </div>
+                        </div>
+                        <!-- Rating Filter -->
+                        <div>
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">Minimum
+                                Rating</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input id="rating-4up" class="rounded text-primary" name="rating" type="checkbox" />
+                                    <span class="text-yellow-400">★★★★☆</span><span class="text-sm">4.0 & Up</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input id="rating-3up" class="rounded text-primary" name="rating" type="checkbox" />
+                                    <span class="text-yellow-400">★★★☆☆</span><span class="text-sm">3.0 & Up</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Sort -->
+                        <div>
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">Sort
+                                By</label>
+                            <select id="filter-sort"
+                                class="w-full rounded-lg border border-slate-200 text-sm py-2.5 px-3 focus:ring-primary focus:border-primary outline-none">
+                                <option value="rating">Highest Rated</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="experience">Most Experience</option>
+                            </select>
+                        </div>
+                        <button id="clear-filters-btn"
+                            class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 font-bold rounded-lg transition-colors text-sm">
+                            Clear All Filters
+                        </button>
+                    </div>
+                </div>
+            </aside>
+            <!-- Tutor Grid -->
+            <section class="flex-1">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold tracking-tight">Available Tutors</h2>
+                        <p id="tutor-results-count" class="text-slate-500 text-sm mt-1">Loading...</p>
+                    </div>
+                </div>
+                <div id="tutor-cards-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <div class="col-span-full text-center py-20 text-slate-400">Loading tutors...</div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="bg-white border-t border-slate-200 mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 text-primary">
+                <span class="material-symbols-outlined text-2xl">school</span>
+                <span class="text-lg font-bold text-slate-900">TutorFlow</span>
+            </div>
+            <p class="text-sm text-slate-400">© 2026 TutorFlow Inc. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Nav user area
+        const u = getCurrentUser();
+        const navArea = document.getElementById('nav-user-area');
+        if (u) {
+            navArea.innerHTML = `
+      <span class="text-sm font-medium text-slate-600">Hi, ${u.name.split(' ')[0]}</span>
+      <button onclick="redirectToDashboard(getCurrentUser())" class="text-sm font-bold text-primary hover:underline">Dashboard</button>
+      <button onclick="logoutUser()" class="text-sm font-bold text-red-400 hover:underline">Sign Out</button>`;
+        } else {
+            navArea.innerHTML = `
+      <button onclick="window.location.href='login.html'" class="text-sm font-semibold px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors">Log In</button>
+      <button onclick="window.location.href='registeration.html'" class="text-sm font-bold px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">Register</button>`;
+        }
+        initTutorSearchPage();
+    </script>
+</body>
+
+</html>

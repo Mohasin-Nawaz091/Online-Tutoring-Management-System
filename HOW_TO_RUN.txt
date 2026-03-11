@@ -1,0 +1,28 @@
+ONLINE TUTORING MANAGEMENT SYSTEM - HOW TO RUN
+==============================================
+
+1. INSTALL PREREQUISITES:
+   - Install Python: https://www.python.org/
+   - Install MySQL: https://dev.mysql.com/downloads/installer/
+   - Run this in terminal: pip install flask flask-sqlalchemy flask-cors pymysql python-dotenv
+
+2. DATABASE SETUP:
+   - Start MySQL.
+   - Create a database named 'tutorflow'.
+   - Open the '.env' file in the root directory and update 'DB_PASSWORD' with your MySQL password.
+
+
+3. INITIALIZE SYSTEM:
+   - Open terminal in 'backend' folder.
+   - Run: python seed.py
+   (This creates tables and demo data)
+
+4. START APP:
+   - Run: python app.py
+   - Keep this terminal open.
+   - Double-click 'index.html' to open the website.
+
+LOGIN ACCOUNTS:
+- Student: alex@student.com / 123456
+- Tutor: sarah@tutor.com / 123456
+- Admin: admin@tutorflow.com / admin123

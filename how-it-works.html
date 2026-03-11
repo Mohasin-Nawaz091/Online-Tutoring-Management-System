@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
+
+        /* Fix for buttons with light background */
+        .bg-primary\/10 {
+            background-color: rgba(36, 99, 235, 0.1) !important;
+        }
+
+        .text-primary {
+            color: #2463eb !important;
+        }
+
+        .bg-primary {
+            background-color: #2463eb !important;
+        }
+    </style>
+
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+    <div class="relative flex min-h-screen flex-col">
+        <!-- Navigation -->
+        <header
+            class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+                        <span class="material-symbols-outlined">school</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">TutorFlow</span>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium hover:text-primary transition-colors text-primary"
+                        href="how-it-works.html">How it Works</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="tutor_search.html">Find
+                        Tutors</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="become_tutor.html">Become
+                        a Tutor</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors"
+                        href="resources.html">Resources</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <button onclick="window.location.href='login.html'"
+                            class="text-sm font-semibold text-slate-700 dark:text-slate-300">Log in</button>
+                        <button onclick="window.location.href='registeration.html'"
+                            class="rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1">
+            <!-- Hero Section -->
+            <section class="relative overflow-hidden py-20 px-6">
+                <div class="mx-auto max-w-4xl text-center">
+                    <h1 class="text-4xl font-extrabold tracking-tight sm:text-6xl text-slate-900 dark:text-white">
+                        Master any subject with <span class="text-primary">TutorFlow</span>
+                    </h1>
+                    <p class="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                        Whether you're a student looking for academic excellence or a tutor ready to share your
+                        knowledge, our platform makes the connection seamless and effective.
+                    </p>
+                </div>
+            </section>
+            <!-- Student/Tutor Toggle -->
+            <div class="mx-auto max-w-7xl px-6">
+                <div class="flex justify-center mb-16">
+                    <div class="inline-flex rounded-xl bg-slate-200/50 dark:bg-slate-800 p-1">
+                        <button
+                            class="px-8 py-3 text-sm font-bold rounded-lg bg-white dark:bg-slate-700 shadow-sm text-primary">For
+                            Students</button>
+                        <button
+                            class="px-8 py-3 text-sm font-bold rounded-lg text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">For
+                            Tutors</button>
+                    </div>
+                </div>
+                <!-- For Students Section -->
+                <div class="space-y-24 pb-24" id="for-students">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <div
+                                class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6">
+                                <span class="material-symbols-outlined text-3xl">search</span>
+                            </div>
+                            <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">1. Find your perfect
+                                tutor</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
+                                Browse through thousands of verified experts. Filter by subject, price range,
+                                availability, and student ratings. View detailed profiles and intro videos to find the
+                                right match for your learning style.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                    Verified academic credentials
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                                    <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                    Real student reviews and success stories
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-2xl">
+                            <img class="w-full h-auto object-cover aspect-video"
+                                data-alt="A student searching for tutors on a laptop"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYghh1cjtSyK2xxALY7qMtpRTvRsBAs2bstHGMnJLtc_AEDJljTDaCnFnxjXIdw9SCRN6e8DyBNvBvXEAXjb_j3K7QN9QL28QkS8pNLpzkSiVOdAuPV8ovZVHa3XrmuqmG-2NLYJ2aiii-cdfylOZWIyKvkFiykGNikjcp92mgXbBulAllkUUvmk5BiFmXMiSwYzNpN7ba_bYwh3nNFw2tlFhrwKz1I5IjJ2AyhoMLERTjWzDEyy1cSIHj4pOqXsM9dwxjLvEGso0" />
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl">
+                            <img class="w-full h-auto object-cover aspect-video"
+                                data-alt="Online calendar showing available time slots"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhT0aWumjgwlOnymaIhRXqWVWVn8-3AT7t27nQYoMF-svWFqMARxRAKjUS5jFJkexKfz7sVWj_tKYpGDW_OYh8s4me1_jk_8A6qb2-7QquZuV_DkeBuSqYnUIyXZS_d6cwQ2Id88rHWSo9-7cR0yQaw_dt9peImoiSiddmVDIgGFOeILseZw6cN1kQ2DooktiYn9a3gWpiHGT5x_GkFcNWd2j0fL9aUXuwnFAkhUbJWvABHRye4c7WrZnpvFlXnz8fo_7XAOOqiQ8" />
+                        </div>
+                        <div>
+                            <div
+                                class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6">
+                                <span class="material-symbols-outlined text-3xl">event_available</span>
+                            </div>
+                            <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">2. Book a session
+                                instantly</h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
+                                Once you've found a tutor, pick a time that works for you. Our synchronized calendar
+                                makes scheduling easy across different time zones. Secure your spot with our protected
+                                payment system.
+                            </p>
+                            <button class="flex items-center gap-2 text-primary font-bold hover:underline">
+                                View scheduling options <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1">
+                            <div
+                                class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6">
+                                <span class="material-symbols-outlined text-3xl">video_chat</span>
+                            </div>
+                            <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">3. Start learning online
+                            </h2>
+                            <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
+                                Join your session through our high-quality virtual classroom. Use the interactive
+                                whiteboard, share files, and record sessions for later review. Academic success is just
+                                one click away.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div
+                                    class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <span class="material-symbols-outlined text-primary mb-2">draw</span>
+                                    <p class="font-bold text-sm">Interactive Whiteboard</p>
+                                </div>
+                                <div
+                                    class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <span class="material-symbols-outlined text-primary mb-2">videocam</span>
+                                    <p class="font-bold text-sm">HD Video Calls</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-2xl">
+                            <img class="w-full h-auto object-cover aspect-video"
+                                data-alt="Student participating in a live video tutoring session"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPc7f-oA8DUS8lpRjsV4HzrM_yiMLsOgJdfGFyaQY9fssUODWJFwXzPKpBb_UTdk1NChZmORJF_0ZuHznjvXwXyML6tLb4za_j-L0nXUazuC1sd2KU8moglmJlwk_RDrOeyyY22AVMyxnvGAh5GQCaG3SYXVBYF3brCfnWGa-mGnyMDN_lpv7u5YF3XzwoLj76lGIvnzDnok_1Ly5_dVWYo3pz55DPcYpnNBI6bmF9wVSeAq4hLtji13bA6DcSBQ-L3EZCRQfHWNo" />
+                        </div>
+                    </div>
+                </div>
+                <!-- For Tutors Section (Preview) -->
+                <section class="bg-primary/5 dark:bg-primary/10 rounded-3xl p-12 mb-24">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Ready to teach? Here's how to
+                            start</h2>
+                        <p class="text-slate-600 dark:text-slate-400">Join our community of elite educators and earn
+                            while making a difference.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div
+                                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white mb-6">
+                                <span class="material-symbols-outlined text-3xl">person_add</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Create Profile</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Showcase your
+                                experience, education, and teaching philosophy to attract students.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white mb-6">
+                                <span class="material-symbols-outlined text-3xl">calendar_month</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Set Availability</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">You're the boss. Set
+                                your own hours and manage your teaching schedule with ease.</p>
+                        </div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white mb-6">
+                                <span class="material-symbols-outlined text-3xl">insights</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Help Students Grow</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Deliver impactful
+                                lessons and watch your students reach their full potential.</p>
+                        </div>
+                    </div>
+                    <div class="mt-12 text-center">
+                        <button onclick="window.location.href='become_tutor.html'"
+                            class="bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform shadow-xl shadow-primary/30">
+                            Become a Tutor Today
+                        </button>
+                    </div>
+                </section>
+                <!-- FAQ Section -->
+                <section class="max-w-3xl mx-auto pb-24">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">Frequently Asked
+                        Questions</h2>
+                    <div class="space-y-4">
+                        <div
+                            class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+                            <div class="flex items-center justify-between cursor-pointer">
+                                <h3 class="text-lg font-bold">How does the payment process work?</h3>
+                                <span
+                                    class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+                            </div>
+                            <div class="mt-4 text-slate-600 dark:text-slate-400 hidden group-hover:block">
+                                Payments are handled securely through our platform. We hold the funds in escrow until
+                                the lesson is completed to ensure satisfaction for both parties.
+                            </div>
+                        </div>
+                        <div
+                            class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+                            <div class="flex items-center justify-between cursor-pointer">
+                                <h3 class="text-lg font-bold">Can I cancel or reschedule a lesson?</h3>
+                                <span
+                                    class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+                            </div>
+                            <div class="mt-4 text-slate-600 dark:text-slate-400 hidden group-hover:block">
+                                Yes, you can reschedule or cancel up to 24 hours before the session starts without any
+                                penalty. After that, a small cancellation fee may apply.
+                            </div>
+                        </div>
+                        <div
+                            class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+                            <div class="flex items-center justify-between cursor-pointer">
+                                <h3 class="text-lg font-bold">What if I'm not happy with my tutor?</h3>
+                                <span
+                                    class="material-symbols-outlined group-hover:rotate-180 transition-transform">expand_more</span>
+                            </div>
+                            <div class="mt-4 text-slate-600 dark:text-slate-400 hidden group-hover:block">
+                                We offer a 100% Satisfaction Guarantee. If you're not happy with your first lesson,
+                                we'll help you find a new tutor and cover the cost of your first hour with them.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 py-12">
+            <div class="mx-auto max-w-7xl px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6 cursor-pointer"
+                        onclick="window.location.href='index.html'">
+                        <div class="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
+                            <span class="material-symbols-outlined text-sm">school</span>
+                        </div>
+                        <span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">TutorFlow</span>
+                    </div>
+                    <p class="text-sm text-slate-500">Empowering students through personalized online education since
+                        2024.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Platform</h4>
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a class="hover:text-primary" href="tutor_search.html">Find a Tutor</a></li>
+                        <li><a class="hover:text-primary" href="how-it-works.html">How it Works</a></li>
+                        <li><a class="hover:text-primary" href="resources.html">Resources</a></li>
+                        <li><a class="hover:text-primary" href="erd_diagram.html">Database (ERD)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Tutors</h4>
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a class="hover:text-primary" href="become_tutor.html">Apply to Teach</a></li>
+                        <li><a class="hover:text-primary" href="#">Tutor Toolkit</a></li>
+                        <li><a class="hover:text-primary" href="#">Community</a></li>
+                        <li><a class="hover:text-primary" href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white mb-6">Support</h4>
+                    <ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a class="hover:text-primary" href="#">Help Center</a></li>
+                        <li><a class="hover:text-primary" href="#">Contact Us</a></li>
+                        <li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+                        <li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mx-auto max-w-7xl px-6 mt-12 pt-8 border-t border-slate-100 dark:border-slate-800 text-center text-sm text-slate-500">
+                © 2026 TutorFlow Inc. All rights reserved.
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: { colors: { "primary": "#2463eb", "background-light": "#f6f6f8", "background-dark": "#111621" }, fontFamily: { "display": ["Lexend"] }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" } } }
+    }
+  </script>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Student Dashboard - TutorFlow</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/students.js"></script>
+
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+
+  <style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined' !important;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'liga';
+    }
+
+    /* Fix for buttons with light background */
+    .bg-primary\/10 {
+      background-color: rgba(36, 99, 235, 0.1) !important;
+    }
+
+    .text-primary {
+      color: #2463eb !important;
+    }
+
+    .bg-primary {
+      background-color: #2463eb !important;
+    }
+  </style>
+
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside
+      class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
+      <div class="p-6 flex items-center gap-3">
+        <div class="bg-primary p-1.5 rounded-lg text-white"><span
+            class="material-symbols-outlined text-2xl">auto_stories</span></div>
+        <h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">TutorFlow</h2>
+      </div>
+      <nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+        <a id="nav-dashboard"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary font-medium cursor-pointer"
+          href="#">
+          <span class="material-symbols-outlined">grid_view</span><span>Dashboard</span>
+        </a>
+        <a id="nav-my-bookings"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+          href="#">
+          <span class="material-symbols-outlined">calendar_today</span><span>My Bookings</span>
+        </a>
+        <a id="nav-find-tutors"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+          href="#">
+          <span class="material-symbols-outlined">person_search</span><span>Find Tutors</span>
+        </a>
+        <a id="nav-profile"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+          href="#">
+          <span class="material-symbols-outlined">manage_accounts</span><span>Profile</span>
+        </a>
+      </nav>
+      <div class="p-4 mt-auto border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-3 p-2">
+          <div
+            class="size-10 rounded-full bg-primary/10 overflow-hidden flex items-center justify-center text-primary font-bold text-lg border border-slate-200"
+            id="sidebar-avatar-container">
+            <img src="" id="sidebar-avatar-img" class="w-full h-full object-cover hidden" alt="S">
+            <span id="sidebar-avatar-placeholder">S</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-sm font-semibold" data-user-name>Student</span>
+            <span class="text-xs text-slate-500">Student Account</span>
+          </div>
+        </div>
+        <a id="nav-logout"
+          class="flex items-center gap-3 px-3 py-2 mt-2 rounded-lg text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors cursor-pointer"
+          href="#">
+          <span class="material-symbols-outlined">logout</span><span>Sign Out</span>
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Bar -->
+      <header
+        class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
+        <div class="flex items-center gap-4 w-1/3">
+          <div class="relative w-full max-w-sm">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+            <input id="dashboard-search"
+              class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary text-sm"
+              placeholder="Search tutors..." type="text" />
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-sm font-medium hidden sm:block" id="today-date"></span>
+          <div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-xl">account_circle</span>
+          </div>
+        </div>
+      </header>
+      <!-- Dashboard Content -->
+      <div class="flex-1 overflow-y-auto p-8 space-y-8">
+        <!-- Welcome Header -->
+        <div class="flex justify-between items-end">
+          <div>
+            <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Welcome back, <span
+                data-user-name>Student</span>!</h1>
+            <p class="text-slate-500 mt-1">Track your progress and manage all your tutoring sessions.</p>
+          </div>
+          <button data-action="book-session"
+            class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+            <span class="material-symbols-outlined">add</span>Book New Session
+          </button>
+        </div>
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+            <div
+              class="size-12 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">schedule</span>
+            </div>
+            <div>
+              <p class="text-sm text-slate-500 font-medium">Upcoming Sessions</p>
+              <p class="text-2xl font-bold" id="stat-upcoming">0</p>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+            <div
+              class="size-12 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">task_alt</span>
+            </div>
+            <div>
+              <p class="text-sm text-slate-500 font-medium">Completed Sessions</p>
+              <p class="text-2xl font-bold" id="stat-completed">0</p>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center gap-4">
+            <div
+              class="size-12 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">school</span>
+            </div>
+            <div>
+              <p class="text-sm text-slate-500 font-medium">Active Tutors</p>
+              <p class="text-2xl font-bold">5</p>
+            </div>
+          </div>
+        </div>
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Upcoming Sessions -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-bold flex items-center gap-2"><span
+                  class="material-symbols-outlined text-primary">event</span>Upcoming Sessions</h3>
+              <a data-action="view-bookings"
+                class="text-sm text-primary font-semibold hover:underline cursor-pointer">View All →</a>
+            </div>
+            <div id="upcoming-sessions-list" class="space-y-3">
+              <div class="text-center py-8 text-slate-400">Loading sessions...</div>
+            </div>
+          </div>
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <div class="bg-primary rounded-2xl p-6 text-white relative overflow-hidden">
+              <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-2">Need help?</h3>
+                <p class="text-blue-100 text-sm mb-6">Find top-rated tutors in 50+ subjects.</p>
+                <button data-action="explore-tutors"
+                  class="w-full bg-white text-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-50 transition-colors">
+                  <span class="material-symbols-outlined">person_search</span>Explore Tutors
+                </button>
+              </div>
+              <div class="absolute -right-4 -bottom-4 opacity-10 scale-150"><span
+                  class="material-symbols-outlined text-[120px]">school</span></div>
+            </div>
+            <!-- Quick Summary -->
+            <div
+              class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm p-6">
+              <h3 class="font-bold text-lg mb-4">Quick Actions</h3>
+              <div class="space-y-3">
+                <button data-action="book-session"
+                  class="w-full flex items-center gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/40 hover:bg-primary/5 transition-colors text-left">
+                  <span class="material-symbols-outlined text-primary">add_circle</span>
+                  <span class="text-sm font-semibold">Book New Session</span>
+                </button>
+                <button data-action="view-bookings"
+                  class="w-full flex items-center gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/40 hover:bg-primary/5 transition-colors text-left">
+                  <span class="material-symbols-outlined text-green-500">history</span>
+                  <span class="text-sm font-semibold">My Booking History</span>
+                </button>
+                <button id="nav-profile-btn"
+                  class="w-full flex items-center gap-3 p-3 rounded-lg border border-slate-100 dark:border-slate-800 hover:border-primary/40 hover:bg-primary/5 transition-colors text-left">
+                  <span class="material-symbols-outlined text-purple-500">manage_accounts</span>
+                  <span class="text-sm font-semibold">Edit Profile</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Subject Progress -->
+        <div>
+          <h3 class="text-xl font-bold mb-6">Subject Progress</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800">
+              <div class="flex justify-between items-start mb-4">
+                <span class="material-symbols-outlined text-3xl text-primary">functions</span>
+                <span class="text-xs font-bold text-slate-400">85%</span>
+              </div>
+              <h4 class="font-bold">Mathematics</h4>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+                <div class="bg-primary h-full w-[85%]"></div>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800">
+              <div class="flex justify-between items-start mb-4">
+                <span class="material-symbols-outlined text-3xl text-purple-500">science</span>
+                <span class="text-xs font-bold text-slate-400">62%</span>
+              </div>
+              <h4 class="font-bold">Physics</h4>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+                <div class="bg-purple-500 h-full w-[62%]"></div>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800">
+              <div class="flex justify-between items-start mb-4">
+                <span class="material-symbols-outlined text-3xl text-orange-500">translate</span>
+                <span class="text-xs font-bold text-slate-400">45%</span>
+              </div>
+              <h4 class="font-bold">Languages</h4>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+                <div class="bg-orange-500 h-full w-[45%]"></div>
+              </div>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-100 dark:border-slate-800">
+              <div class="flex justify-between items-start mb-4">
+                <span class="material-symbols-outlined text-3xl text-green-500">terminal</span>
+                <span class="text-xs font-bold text-slate-400">92%</span>
+              </div>
+              <h4 class="font-bold">Computer Science</h4>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+                <div class="bg-green-500 h-full w-[92%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    document.getElementById('nav-profile-btn').addEventListener('click', () => window.location.href = 'profile_setting.html');
+    document.getElementById('dashboard-search').addEventListener('keydown', e => {
+      if (e.key === 'Enter') window.location.href = 'tutor_search.html?q=' + encodeURIComponent(e.target.value);
+    });
+    initStudentDashboard();
+    // Set avatar initial
+    const u = getCurrentUser();
+    if (u) {
+      const img = document.getElementById('sidebar-avatar-img');
+      const placeholder = document.getElementById('sidebar-avatar-placeholder');
+      if (u.photo) {
+        img.src = u.photo;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        placeholder.textContent = u.name.charAt(0).toUpperCase();
+      }
+    }
+  </script>
+</body>
+
+</html>
