@@ -1,10 +1,10 @@
-# 🎓 Online Tutoring Management System - TutorFlow
+#  Online Tutoring Management System - TutorFlow
 
 A complete full-stack web application designed to connect students with expert tutors. This project features a Python Flask backend, a MySQL database, and a modern, responsive frontend.
 
 ---
 
-## 📋 Prerequisites
+##  Prerequisites
 
 Before you begin, ensure you have the following installed on your laptop:
 
@@ -14,7 +14,7 @@ Before you begin, ensure you have the following installed on your laptop:
 
 ---
 
-## 🚀 Step-by-Step Setup Instructions
+##  Step-by-Step Setup Instructions
 
 ### 1. Clone or Extract the Project
 Make sure all project files are in a dedicated folder (e.g., `dp_project_sm`).
@@ -58,7 +58,7 @@ python app.py
 
 ---
 
-## 🌐 Accessing the Frontend
+##  Accessing the Frontend
 
 Once the backend is running:
 1.  Navigate back to the project root folder.
@@ -89,4 +89,4 @@ Use these accounts to test the system immediately:
 
 ---
 
-*Developed for University Database Lab Project.*
+*Developed for University Database Lab Project by Mohasin Nawaz.*
